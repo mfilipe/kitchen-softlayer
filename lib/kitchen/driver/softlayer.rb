@@ -86,7 +86,7 @@ module Kitchen
         debug "fqdn: #{config[:fqdn]}"
         debug "server_name: #{config[:server_name]}"
         debug "server_name_prefix: #{config[:server_name_prefix]}"
-        server = create_server if config[:fqdn].include?(config[:default_name]) || !find_server(config[:fqdn])
+        server = create_server if config[:fqdn].include?(config[:default_name].to_s) || !find_server(config[:fqdn])
         state[:server_id] = server.id
         info "Softlayer instance <#{state[:server_id]}> created."
         server.wait_for do
